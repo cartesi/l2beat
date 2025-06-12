@@ -67,9 +67,9 @@ export const cartesiprthoneypot: ScalingProject = {
         stateUpdates: OPTIMISTIC_ROLLUP_STATE_UPDATES_WARNING,
       },
       explanation:
-      'The current PRT implementation lacks the planned economic layer (bonds and rewards). As a result, (1) honest defenders must cover their own gas without compensation, and (2) a well-funded adversary can cheaply create sybil challengers to keep the dispute tree alive, delaying finality. Safety and decentralisation are unaffected, but withdrawals can be significantly delayed until every branch is resolved.',
-      },
+        'The current PRT implementation uses three tournament levels, which creates liveness risks in the event of Sybil attacks. Furthermore, it lacks the planned economic layer (bonds and rewards). As a result: (1) honest defenders must cover their own gas costs without compensation, and (2) a well-funded adversary can cheaply create Sybil challengers to keep the dispute tree alive, delaying finality. Safety and decentralization are unaffected, but withdrawals can be significantly delayed until every branch is resolved.',
     },
+  },
 
   config: {
     escrows: [
@@ -92,7 +92,8 @@ export const cartesiprthoneypot: ScalingProject = {
             '0x6ce590b9f0697327f18c601df6f0bae4a0801b68',
           ),
           selector: '0x8bca2e0c',
-          functionSignature: 'function settle(uint256 epochNumber, bytes32 outputsMerkleRoot, bytes32[] calldata proof)',
+          functionSignature:
+            'function settle(uint256 epochNumber, bytes32 outputsMerkleRoot, bytes32[] calldata proof)',
           sinceTimestamp: UnixTime(1749510479),
         },
       },
@@ -150,7 +151,8 @@ export const cartesiprthoneypot: ScalingProject = {
       },
     },
     {
-      rollupNodeLink: 'https://github.com/cartesi/dave/tree/v1.0.0/cartesi-rollups/node',
+      rollupNodeLink:
+        'https://github.com/cartesi/dave/tree/v1.0.0/cartesi-rollups/node',
     },
   ),
 
@@ -222,7 +224,7 @@ export const cartesiprthoneypot: ScalingProject = {
   contracts: {
     addresses: {
       [discovery.chain]: [
-        discovery.getContractDetails('Honeypot', {
+        discovery.getContractDetails('Application', {
           description:
             'Cartesi Application instance for the Honeypot DApp, responsible for holding assets and allowing the DApp to interact with other smart contracts.',
         }),
@@ -253,14 +255,36 @@ export const cartesiprthoneypot: ScalingProject = {
       title: 'Honeypot announcement',
       url: 'https://medium.com/cartesi/cartesi-ecosystem-update-2023-124b384401cc#:~:text=Honeypot%20DApp%20on%20Mainnet',
       date: '2023-04-11T00:00:00Z',
-      description: 'Honeypot first announced to the community.',
+      description: 'Honeypot v1 first announced to the community.',
       type: 'general',
     },
     {
       title: 'Honeypot launch',
       url: 'https://x.com/cartesiproject/status/1706685141421047982',
       date: '2023-09-26T00:00:00Z',
-      description: 'Honeypot launched on mainnet.',
+      description: 'Honeypot v1 launched on mainnet.',
+      type: 'general',
+    },
+    {
+      title: 'Permissionless Refereed Tournaments',
+      url: 'https://arxiv.org/abs/2212.12439',
+      date: '2022-12-23T00:00:00Z',
+      description: 'PRT paper published on arxiv',
+      type: 'general',
+    },
+    {
+      title:
+        'The Dave Algorithm — triumphing over Sybils with a laptop and a small collateral',
+      url: 'https://youtu.be/dI_3neyXVl0',
+      date: '2024-11-13T00:00:00Z',
+      description: 'Devcon 2024 presentation introducing the Dave algorithm',
+      type: 'general',
+    },
+    {
+      title: 'Dave: a decentralized, secure, and lively fraud-proof algorithm',
+      url: 'https://dl.acm.org/doi/10.1145/3734698',
+      date: '2025-05-09T00:00:00Z',
+      description: 'Dave paper published on ACM DLT, a peer-reviewed journal',
       type: 'general',
     },
   ],

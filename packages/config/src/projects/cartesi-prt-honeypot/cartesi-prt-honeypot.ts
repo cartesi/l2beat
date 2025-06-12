@@ -45,7 +45,7 @@ export const cartesiprthoneypot: ScalingProject = {
     // TODO review all links
     links: {
       websites: ['https://cartesi.io/'],
-      documentation: ['https://docs.cartesi.io/cartesi-rollups/'],
+      documentation: ['https://docs.cartesi.io/cartesi-rollups/', 'https://github.com/cartesi/honeypot/wiki/'],
       explorers: ['https://cartesiscan.io/', 'https://explorer.cartesi.io/'],
       repositories: ['https://github.com/cartesi/honeypot'],
       socialMedia: [

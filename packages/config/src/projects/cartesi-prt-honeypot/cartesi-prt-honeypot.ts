@@ -17,9 +17,9 @@ import { getStage } from '../../common/stages/getStage'
 import { ProjectDiscovery } from '../../discovery/ProjectDiscovery'
 import type { ScalingProject } from '../../internalTypes'
 
-const discovery = new ProjectDiscovery('honeypot')
+const discovery = new ProjectDiscovery('cartesi-prt-honeypot')
 
-export const cartesiPrtHoneypot: ScalingProject = {
+export const cartesiprthoneypot: ScalingProject = {
   type: 'layer2',
   id: ProjectId('cartesi-prt-honeypot'),
   capability: 'appchain',
@@ -73,7 +73,6 @@ export const cartesiPrtHoneypot: ScalingProject = {
     },
   },
 
-  // TODO update
   config: {
     escrows: [
       discovery.getEscrowDetails({
@@ -83,9 +82,6 @@ export const cartesiPrtHoneypot: ScalingProject = {
       }),
     ],
 
-    // This field is optional.
-    // What should it be updated to?
-    // consensus settle() perhaps?
     trackedTxs: [
       {
         uses: [
@@ -95,7 +91,7 @@ export const cartesiPrtHoneypot: ScalingProject = {
         query: {
           formula: 'functionCall',
           address: EthereumAddress(
-            '0x6CE590b9F0697327f18c601DF6f0baE4a0801B68',
+            '0x6ce590b9f0697327f18c601df6f0bae4a0801b68',
           ),
           selector: '0x8bca2e0c',
           functionSignature: 'function settle(uint256 epochNumber, bytes32 outputsMerkleRoot, bytes32[] calldata proof)',
@@ -163,12 +159,12 @@ export const cartesiPrtHoneypot: ScalingProject = {
   technology: {
     // TODO
     dataAvailability: {
-      ...TECHNOLOGY_DATA_AVAILABILITY.ON_CHAIN_CANONICAL,
-      // ...TECHNOLOGY_DATA_AVAILABILITY.ON_CHAIN_CALLDATA, // TODO canonical (old) or calldata??
+      ...TECHNOLOGY_DATA_AVAILABILITY.ON_CHAIN_CALLDATA,
+      // ...TECHNOLOGY_DATA_AVAILABILITY.ON_CHAIN_CANONICAL, // TODO canonical (old) or calldata??
       references: [
         {
           title: 'InputBox.sol#18 - Etherscan source code, addInput function',
-          url: 'https://etherscan.io/address/0xc70074BDD26d8cF983Ca6A5b89b8db52D5850051#code#F1#L18',
+          url: 'https://etherscan.io/address/0xc70074bdd26d8cf983ca6a5b89b8db52d5850051#code#F1#L18',
         },
       ],
     },
@@ -230,7 +226,15 @@ export const cartesiPrtHoneypot: ScalingProject = {
       [discovery.chain]: [
         discovery.getContractDetails('Honeypot', {
           description:
-            'CartesiDApp instance for the Honeypot DApp, responsible for holding assets and allowing the DApp to interact with other smart contracts.',
+            'Cartesi Application instance for the Honeypot DApp, responsible for holding assets and allowing the DApp to interact with other smart contracts.',
+        }),
+        discovery.getContractDetails('DaveConsensus', {
+          description:
+            'Contract that manages PRT fraud-proof tournaments, managing application epochs and input validation, as well as settlement and challenge periods.',
+        }),
+        discovery.getContractDetails('MultiLevelTournamentFactory', {
+          description:
+            'Contract that instantiates a PRT fraud-proof tournament, triggered every epoch.',
         }),
         discovery.getContractDetails('InputBox', {
           description:

@@ -61,17 +61,15 @@ export const cartesiprthoneypot: ScalingProject = {
         'https://medium.com/cartesi',
       ],
     },
-
     liveness: {
       warnings: {
-        // TODO delay??
+        // Standard optimistic-rollup notice
         stateUpdates: OPTIMISTIC_ROLLUP_STATE_UPDATES_WARNING,
-
-        // OPTIMISTIC_ROLLUP_STATE_UPDATES_WARNING := 'Please note, for Optimistic rollups the state is not finalized until the challenge period passes.',
       },
-      explanation: '', // TODO PRT delay??
+      explanation:
+      'The current PRT implementation lacks the planned economic layer (bonds and rewards). As a result, (1) honest defenders must cover their own gas without compensation, and (2) a well-funded adversary can cheaply create sybil challengers to keep the dispute tree alive, delaying finality. Safety and decentralisation are unaffected, but withdrawals can be significantly delayed until every branch is resolved.',
+      },
     },
-  },
 
   config: {
     escrows: [

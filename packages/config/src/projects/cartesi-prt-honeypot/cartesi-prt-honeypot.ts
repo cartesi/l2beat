@@ -23,7 +23,6 @@ export const cartesiprthoneypot: ScalingProject = {
   type: 'layer2',
   id: ProjectId('cartesi-prt-honeypot'),
   capability: 'appchain',
-  // echo "addedAt: UnixTime($(date +%s)), // $(date -u +%Y-%m-%dT%H:%M:%SZ)"
   addedAt: UnixTime(1749678198), // 2025-06-11T21:43:18Z
 
   colors: {
@@ -33,21 +32,19 @@ export const cartesiprthoneypot: ScalingProject = {
 
   display: {
     name: 'Cartesi PRT Honeypot',
-    shortName: 'Cartesi PRT Honeypot',
     slug: 'cartesi-prt-honeypot',
-    stack: 'Cartesi Rollups',
     category: 'Optimistic Rollup',
+    stack: 'Cartesi Rollups',
 
     description:
       'Cartesi PRT Honeypot is an application-specific Stage-2 rollup that stress-tests Cartesi Rollups’ security. Protected solely by Cartesi’s PRT (Permissionless Refereed Tournaments) fraud-proof algorithm, it turns its locked funds into an open bounty for anyone who can break the system.',
     purposes: ['Bug bounty'],
 
-    // TODO review all links
     links: {
       websites: ['https://cartesi.io/'],
       documentation: ['https://docs.cartesi.io/cartesi-rollups/', 'https://github.com/cartesi/honeypot/wiki/'],
       explorers: ['https://cartesiscan.io/', 'https://explorer.cartesi.io/'],
-      repositories: ['https://github.com/cartesi/honeypot'],
+      repositories: ['https://github.com/cartesi/honeypot', 'https://github.com/cartesi/dave'],
       socialMedia: [
         'https://twitter.com/cartesiproject',
         'https://discord.gg/G2tCH5KkcM',
@@ -60,10 +57,12 @@ export const cartesiprthoneypot: ScalingProject = {
         'https://medium.com/cartesi',
       ],
     },
+
     liveness: {
       warnings: {
         // Standard optimistic-rollup notice
-        stateUpdates: OPTIMISTIC_ROLLUP_STATE_UPDATES_WARNING,
+        stateUpdates:
+          'The current PRT implementation is vulnerable to Sybil attacks that may impact liveness. Safety and decentralization are unaffected.'
       },
       explanation:
         'The current PRT implementation uses three tournament levels, which creates liveness risks in the event of Sybil attacks. Furthermore, it lacks the planned economic layer (bonds and rewards). As a result: (1) honest defenders must cover their own gas costs without compensation, and (2) a well-funded adversary can cheaply create Sybil challengers to keep the dispute tree alive, delaying finality. Safety and decentralization are unaffected, but withdrawals can be significantly delayed until every branch is resolved.',
@@ -71,6 +70,8 @@ export const cartesiprthoneypot: ScalingProject = {
   },
 
   config: {
+    associatedTokens: ['CTSI'],
+
     escrows: [
       discovery.getEscrowDetails({
         address: EthereumAddress('0x4c1e74ef88a75c24e49eddd9f70d82a94d19251c'),
@@ -99,7 +100,6 @@ export const cartesiprthoneypot: ScalingProject = {
     ],
   },
 
-  // TODO new field, verify
   ecosystemInfo: {
     id: ProjectId('cartesi'),
   },
@@ -156,10 +156,8 @@ export const cartesiprthoneypot: ScalingProject = {
   ),
 
   technology: {
-    // TODO
     dataAvailability: {
-      ...TECHNOLOGY_DATA_AVAILABILITY.ON_CHAIN_CALLDATA,
-      // ...TECHNOLOGY_DATA_AVAILABILITY.ON_CHAIN_CANONICAL, // TODO canonical (old) or calldata??
+      ...TECHNOLOGY_DATA_AVAILABILITY.ON_CHAIN_CANONICAL,
       references: [
         {
           title: 'InputBox.sol#18 - Etherscan source code, addInput function',
@@ -170,18 +168,18 @@ export const cartesiprthoneypot: ScalingProject = {
 
     operator: {
       ...OPERATOR.DECENTRALIZED_OPERATOR,
-      references: [], // TODO?
+      references: [],
     },
 
     forceTransactions: {
       ...FORCE_TRANSACTIONS.CANONICAL_ORDERING('smart contract'),
-      references: [], // TODO?
+      references: [],
     },
 
     exitMechanisms: [
       {
-        ...EXITS.REGULAR_MESSAGING('optimistic'), // TODO: changed it from REGULAR_WITHDRAWAL, verify
-        references: [], // TODO?
+        ...EXITS.REGULAR_MESSAGING('optimistic'),
+        references: [],
       },
     ],
   },
@@ -191,7 +189,7 @@ export const cartesiprthoneypot: ScalingProject = {
       'The source code for the Cartesi node software is available [here](https://github.com/cartesi/dave/tree/v1.0.0/cartesi-rollups/node).',
     genesisState:
       'The genesis state comes from the Honeypot Cartesi Machine template included in the [Honeypot v2 release](https://github.com/cartesi/honeypot/releases/tag/v2.0.0). Alternatively, you can recreate it by following the build steps in the [Honeypot GitHub Repository](https://github.com/cartesi/honeypot/tree/v2.0.0?tab=readme-ov-file#building-the-application).',
-    dataFormat: // TODO Review deposits, update withdrawal.
+    dataFormat:
       'The reference implementation for ERC20 deposits can be found [here](https://github.com/cartesi/rollups-contracts/blob/v2.0.0/src/common/InputEncoding.sol#L38). To learn about the withdrawal request format, please refer to the documentation [here](https://github.com/cartesi/honeypot/wiki/Requesting-withdrawals).',
   },
 
@@ -219,7 +217,6 @@ export const cartesiprthoneypot: ScalingProject = {
     ],
   },
 
-  // TODO update
   contracts: {
     addresses: {
       [discovery.chain]: [
@@ -248,7 +245,6 @@ export const cartesiprthoneypot: ScalingProject = {
     risks: [],
   },
 
-  // TODO: Papers? Presentations? Honeypot v1?
   milestones: [
     {
       title: 'Honeypot Authority announcement',

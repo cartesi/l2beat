@@ -45,8 +45,7 @@ export const cartesiprthoneypot: ScalingProject = {
     // TODO review all links
     links: {
       websites: ['https://cartesi.io/'],
-      bridges: ['https://explorer.cartesi.io/stake'],
-      documentation: ['https://docs.cartesi.io/cartesi-rollups/'],
+      documentation: ['https://docs.cartesi.io/cartesi-rollups/', 'https://github.com/cartesi/honeypot/wiki/'],
       explorers: ['https://cartesiscan.io/', 'https://explorer.cartesi.io/'],
       repositories: ['https://github.com/cartesi/honeypot'],
       socialMedia: [
@@ -252,17 +251,17 @@ export const cartesiprthoneypot: ScalingProject = {
   // TODO: Papers? Presentations? Honeypot v1?
   milestones: [
     {
-      title: 'Honeypot v1 announcement',
+      title: 'Honeypot Authority announcement',
       url: 'https://medium.com/cartesi/cartesi-ecosystem-update-2023-124b384401cc#:~:text=Honeypot%20DApp%20on%20Mainnet',
       date: '2023-04-11T00:00:00Z',
-      description: 'Honeypot v1 first announced to the community.',
+      description: 'Honeypot Authority first announced to the community.',
       type: 'general',
     },
     {
-      title: 'Honeypot v1 launch',
+      title: 'Honeypot Authority launch',
       url: 'https://x.com/cartesiproject/status/1706685141421047982',
       date: '2023-09-26T00:00:00Z',
-      description: 'Honeypot v1 launched on mainnet.',
+      description: 'Honeypot Authority launched on mainnet.',
       type: 'general',
     },
     {
@@ -287,6 +286,14 @@ export const cartesiprthoneypot: ScalingProject = {
       description: 'Dave paper published on ACM DLT, a peer-reviewed journal',
       type: 'general',
     },
+    {
+      title: 'Cartesi PRT Honeypot deployed on Ethereum',
+      url: 'https://etherscan.io/address/0x4c1e74ef88a75c24e49eddd9f70d82a94d19251c',
+      date: '2025-06-09T23:08:11Z',
+      description: 'Cartesi PRT Honeypot deployed to Ethereum mainnet',
+      type: 'general',
+    },
+
   ],
 
   badges: [

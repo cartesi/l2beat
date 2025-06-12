@@ -252,14 +252,14 @@ export const cartesiprthoneypot: ScalingProject = {
   // TODO: Papers? Presentations? Honeypot v1?
   milestones: [
     {
-      title: 'Honeypot announcement',
+      title: 'Honeypot v1 announcement',
       url: 'https://medium.com/cartesi/cartesi-ecosystem-update-2023-124b384401cc#:~:text=Honeypot%20DApp%20on%20Mainnet',
       date: '2023-04-11T00:00:00Z',
       description: 'Honeypot v1 first announced to the community.',
       type: 'general',
     },
     {
-      title: 'Honeypot launch',
+      title: 'Honeypot v1 launch',
       url: 'https://x.com/cartesiproject/status/1706685141421047982',
       date: '2023-09-26T00:00:00Z',
       description: 'Honeypot v1 launched on mainnet.',
